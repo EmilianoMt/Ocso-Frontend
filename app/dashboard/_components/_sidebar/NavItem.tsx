@@ -1,5 +1,6 @@
+"use client";
 import Link from "next/link";
-import path from "path";
+import { usePathname } from "next/navigation";
 
 interface NavItemProps {
     icon: JSX.Element;
@@ -7,8 +8,9 @@ interface NavItemProps {
 }
 
 const NavItem = ({icon, path}: NavItemProps) =>{
+    const pathName = usePathname();
     return (
-        <Link href={path}>
+        <Link href={path} className={pathName == path ? "bg-orange-400 w-full flex justify-center transition-colors" : ""}>
             {icon}
         </Link>
     )
