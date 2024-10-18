@@ -1,4 +1,3 @@
-import Providers from "@/providers";
 import Image from "next/image";
 
 export default function AuthLayout ({
@@ -11,7 +10,7 @@ export default function AuthLayout ({
             <div className="place-content-center place-self-center place-items-center text-center">
             <div className="flex flex-col items-center bottom-10 relative">
             <Image 
-                src="/Oxxo_Logo.png" 
+                src="/oxxo-logo.svg" 
                 alt="Oxxo Logo" 
                 width={250} 
                 height={0}
