@@ -3,11 +3,12 @@ import { cookies } from "next/headers";
 import { Location } from "@/entities";
 import SelectLocation from "./_components/SelectLocation";
 import { TOKEN_NAME } from "@/constants";
+import { data } from "framer-motion/client";
 
 const LocationsPage = async ({searchParams}: {searchParams: {[key: string]: string | string[] | undefined}}) => {
   const userCookies = cookies();
   const token = userCookies.get(TOKEN_NAME)?.value;
-  const { data } = await axios.get<Location[]>(
+  let { data } = await axios.get<Location[]>(
     "http://127.0.0.1:4000/locations",
     {
       headers: {
@@ -15,7 +16,15 @@ const LocationsPage = async ({searchParams}: {searchParams: {[key: string]: stri
       },
     }
   );
-  // const cantidad = countLocations?.data?.length;
+  data = [
+    {
+      locationId: 0,
+      locationName: "Ninguna",
+      locationLatLng:[0,0],
+      locationAddress: "No especificada",
+    },
+    ...data
+  ]
   return (
     <div className="w-7/12">
       <div className="w-full flex flex-col items-center h-[90vh] bg-red-50">

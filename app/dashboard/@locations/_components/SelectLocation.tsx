@@ -18,7 +18,7 @@ export default function SelectLocation({
       }}
       selectedKeys={store ? store : ""}
       onChange={((e) => {
-        if (e.target.value === "") {
+        if (e.target.value === "0") {
           router.push(`/dashboard`);          
         }else{
           router.push(`/dashboard?store=${e.target.value}`);
