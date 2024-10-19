@@ -4,6 +4,7 @@ import { Location } from "@/entities";
 import SelectLocation from "./_components/SelectLocation";
 import { TOKEN_NAME } from "@/constants";
 import { data } from "framer-motion/client";
+import LocationCard from "./_components/LocationCard";
 
 const LocationsPage = async ({searchParams}: {searchParams: {[key: string]: string | string[] | undefined}}) => {
   const userCookies = cookies();
@@ -31,6 +32,9 @@ const LocationsPage = async ({searchParams}: {searchParams: {[key: string]: stri
         <div className=" w-8/12 mx-10 my-10">
           <SelectLocation locations={data} store={searchParams.store} />
         </div>
+          <div className="w-8/12">
+            <LocationCard store={searchParams.store}/>
+          </div>
       </div>
     </div>
   );
