@@ -5,6 +5,7 @@ import SelectLocation from "./_components/SelectLocation";
 import { TOKEN_NAME } from "@/constants";
 import LocationCard from "./_components/LocationCard";
 import FromNewLocation from './_components/FormNewLocation';
+import DeleteLocationButton from "./_components/DeleteLocationButton";
 
 const LocationsPage = async ({searchParams}: {searchParams: {[key: string]: string | string[] | undefined}}) => {
   const userCookies = cookies();
@@ -35,7 +36,10 @@ const LocationsPage = async ({searchParams}: {searchParams: {[key: string]: stri
           <div className="w-8/12">
             <LocationCard store={searchParams.store}/>
           </div>
-          <FromNewLocation />
+          <div className="w-6/12">
+            <FromNewLocation searchParams={searchParams}/>
+          </div>
+          <DeleteLocationButton store={searchParams.store}/>
       </div>
     </div>
   );
