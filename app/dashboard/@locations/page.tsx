@@ -6,15 +6,14 @@ import { TOKEN_NAME } from "@/constants";
 import LocationCard from "./_components/LocationCard";
 import FromNewLocation from './_components/FormNewLocation';
 import DeleteLocationButton from "./_components/DeleteLocationButton";
+import { authHeaders } from "@/helpers/authHeaders";
 
 const LocationsPage = async ({searchParams}: {searchParams: {[key: string]: string | string[] | undefined}}) => {
-  const userCookies = cookies();
-  const token = userCookies.get(TOKEN_NAME)?.value;
   let { data } = await axios.get<Location[]>(
     "http://127.0.0.1:4000/locations",
     {
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authHeaders()
       },
     }
   );

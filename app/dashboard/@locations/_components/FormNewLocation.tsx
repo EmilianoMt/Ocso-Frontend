@@ -4,18 +4,18 @@ import { cookies } from "next/headers";
 import { API_URL, TOKEN_NAME } from "@/constants";
 import axios from "axios";
 import SelectManager from "./SelectManager";
+import { authHeaders } from "@/helpers/authHeaders";
 
 export default async function FromNewLocation({searchParams}: {searchParams: {[key: string]: string | string[] | undefined}}) {
     if (searchParams.store) return null;
-    const token = cookies().get(TOKEN_NAME)?.value;
     const responseManagers = await axios.get(`${API_URL}/managers`,{
         headers: {
-            Authorization: `Bearer ${token}`
+            ...authHeaders()
         }
     })
     const responseLocations = await axios.get(`${API_URL}/locations`,{
         headers: {
-            Authorization: `Bearer ${token}`
+            ...authHeaders()
         }
     })
 
