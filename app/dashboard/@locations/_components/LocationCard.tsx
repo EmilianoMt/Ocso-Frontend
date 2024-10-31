@@ -28,8 +28,8 @@ export default async function LocationCard({
       <Divider />
       <CardBody>
         <p className="w-full">
-          Manager: 
-          <Link href={{ pathname: `/dashboard/employees` }}>
+          Manager: {" "}
+          <Link href={{ pathname: `/dashboard/managers/${data.manager?.managerId}` }}>
             <b>{data.manager?.managerFullName}</b>
           </Link>
         </p>
