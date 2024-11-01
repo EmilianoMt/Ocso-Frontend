@@ -13,6 +13,9 @@ const ProviderPage = async () => {
     headers: {
       ...authHeaders(),
     },
+    next: {
+      tags: ["dashboard:providers"],
+    },
   });
   const providers: Provider[] = await response.json();
 
@@ -26,10 +29,11 @@ const ProviderPage = async () => {
       <div className="flex flex-wrap w-full py-20 flex-grow-0 gap-14">
         {providers.map((provider: Provider) => (
           <Link
+            key={provider.providerId}
             className="hover:scale-110 transition-transform"
             href={{ pathname: `/dashboard/providers/${provider.providerId}` }}
           >
-            <ProviderCard provider={provider} key={provider.providerId} />
+            <ProviderCard  provider={provider} />
           </Link>
         ))}
       </div>
