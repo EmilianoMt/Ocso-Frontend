@@ -15,6 +15,7 @@ export default function FilteredCards({
   const [filtered, setFiltered] = useState<string>("");
   const [provider, setProvider] = useState<string>();
   const [productsList, setProductsList] = useState<Product[]>(products);
+  const [show, setShow] = useState(false);
   useEffect(() => {
     const filteredProducts = products.filter((product) => {
       if (
@@ -27,9 +28,10 @@ export default function FilteredCards({
       }
     });
     setProductsList(filteredProducts);
-  }, [filtered, provider]);
+    setShow(true);
+  }, [filtered, provider, products]);
   return (
-    <div className="max-h-[90vh] min-h-[90vh] overflow-y-auto flex flex-col gap-8 border-r-orange-400 border-r-2 pt-10 px-10">
+    <div className="max-h-[90vh] min-h-[90vh] overflow-y-auto flex flex-col gap-4 border-r-orange-400 border-r-2 pt-10 px-10">
       <Select
         label="Proveedor"
         onChange={(e) => {
@@ -48,7 +50,7 @@ export default function FilteredCards({
         }}
         label="Nombre producto"
       />
-      {productsList.map((product) => {
+      {show && productsList.map((product) => {
         return (
           <Link
             className="hover:scale-110 transition-transform"
