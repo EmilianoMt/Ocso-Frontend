@@ -18,7 +18,7 @@ export default async function updateEmployee(employeeId: string, formdata: FormD
        },
         body: cleanData
     });
-    if (response.status === 200) revalidateTag('dashboard:employees');
+    if (response.status === 200) revalidateTag("dashboard:employees");
     if (response.status === 200) revalidateTag(`dashboard:employees:${employeeId}`);
-    return 
+    return;
 }
