@@ -1,6 +1,10 @@
+import ModalGeneric from "@/app/dashboard/_components/ModalGeneric";
 import { Manager } from "@/entities";
 import { Card, CardHeader, Divider, CardBody } from "@nextui-org/react";
 import Link from "next/link";
+import FormUpdateUserManager from "./FormUpdateUser";
+import { LuPlus } from "react-icons/lu";
+import FormCreateUserManager from "./FormCreateUser";
 
 export default function ManagerCard({ manager }: { manager: Manager }) {
   return (
@@ -9,6 +13,17 @@ export default function ManagerCard({ manager }: { manager: Manager }) {
         <p className="w-full">
           <b className="text-4xl">{manager.managerFullName}</b>{" "}
         </p>
+        {
+          manager.user ?(
+            <ModalGeneric icon={<LuPlus size="20"/>}>
+              <FormUpdateUserManager user={manager.user}/>
+            </ModalGeneric>
+          ):(
+            <ModalGeneric icon={<LuPlus size="20"/>}>
+              <FormCreateUserManager manager={manager}/>
+            </ModalGeneric>
+          )
+        }
       </CardHeader>
       <Divider />
       <CardBody className=" items-center">
