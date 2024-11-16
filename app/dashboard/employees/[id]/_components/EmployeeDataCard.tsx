@@ -1,7 +1,9 @@
 import { Employee } from "@/entities";
-import { Image } from "@nextui-org/react";
 import Link from "next/link";
 import DeleteEmployee from "../../_components/DeleteEmployee";
+import CreateUser from "../../_components/CreateUser";
+import { LuUser } from "react-icons/lu";
+import FormCreateUserEmployee from "../../_components/FormCreateUser";
 
 export default function EmployeeDataCard({ employee }: { employee: Employee }) {
   return (
@@ -30,14 +32,11 @@ export default function EmployeeDataCard({ employee }: { employee: Employee }) {
         </div>
       </div>
       <div className="h-full py-20 w-1 bg-zinc-300 mx-6" />
-      <Image
-        src={employee.employeePhoto}
-        isZoomed
-        className="object-cover"
-        classNames={{
-          img: "size-60",
-        }}
-      />
+      <CreateUser icon={<LuUser size="20"/>} photo={employee?.employeePhoto}>
+        {!employee.user &&(
+          <FormCreateUserEmployee employee={employee} />
+        )}
+      </CreateUser>
     </div>
   );
 }
