@@ -16,7 +16,7 @@ export default function FormCreateUserEmployee({
   const { id } = employee;
   const registerEmployeeById = registerEmployee.bind(null, id);
   return (
-    <form action={registerEmployeeById} className="py-10 flex-col gap-2">
+    <form action={registerEmployeeById} className="py-10 flex flex-col gap-2">
       <h1 className="text-white text-xl font-bold text-center">
         Crear Usuario
       </h1>
@@ -44,7 +44,7 @@ export default function FormCreateUserEmployee({
       >
         Generar contraseña
       </Button>
-      <Button type="submit">Crear Usuario</Button>
+      <Button type="submit" color="primary">Crear Usuario</Button>
     </form>
   );
 }
